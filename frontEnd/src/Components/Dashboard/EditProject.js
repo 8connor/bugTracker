@@ -5,8 +5,10 @@ function EditProject() {
 
     return (
         <Card>
-            <Card.Title>
-
+            <Card.Title className="bg-dark text-light">
+                <p className="ml-3 mt-2">
+                   Edit Project
+                </p>
             </Card.Title>
             <Card.Body>
 
