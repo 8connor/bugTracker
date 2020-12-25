@@ -54,10 +54,9 @@ function NavigationList() {
             </Col>
             <Col
                 sm={{ span: 12, offset: 0 }}
-                md={{ span: 4, offset: 4 }}
-                lg={{ span: 4, offset: 4 }}
+                md={{ span: 8, offset: 0 }}
+                lg={{ span: 8, offset: 0 }}
 
-                className="ml-5"
             >
                 {
                     create ?

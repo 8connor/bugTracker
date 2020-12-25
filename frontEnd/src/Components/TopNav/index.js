@@ -28,7 +28,7 @@ function TopNav() {
             </Nav>
             <Nav className="ml-auto">
                 {isAuthenticated ?
-                    <Link to="/logout" className="nav-link loginButton bg-success text-light rounded" onClick={() => logout({ returnTo: window.location.origin })}>Logout</Link>
+                    <Link to="/logout" className="nav-link loginButton bg-danger text-light rounded" onClick={() => logout({ returnTo: window.location.origin })}>Logout</Link>
                     :
                     <Link to="/login" className="nav-link loginButton bg-success text-light rounded" onClick={() => loginWithRedirect()}>Login</Link>
                 }
