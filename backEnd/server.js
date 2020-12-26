@@ -1,7 +1,9 @@
 const express = require("express");
 const app = express();
+const path = require("path");
 const mongoose = require("mongoose");
 const PORT = 3001;
+const { Projects } = require("./Routes/index.js");
 
 mongoose.connect(
     `mongodb://localhost:27017/bugTracker`,
@@ -13,8 +15,10 @@ mongoose.connect(
 
 app.use(express.json());
 
+app.use("/api", Projects)
+
 app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "../client/public/index.html"));
+    res.sendFile(path.join(__dirname, "../frontEnd/public/index.html"));
 });
 
 app.listen(PORT, () => {
