@@ -21,6 +21,9 @@ function NavigationList() {
             case "Edit projects":
                 setCreate(false)
                 setEdit(true);
+                break;
+            default:
+                //do nothing
         }
 
     }

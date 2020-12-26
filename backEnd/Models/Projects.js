@@ -10,7 +10,13 @@ const ProjectSchema = new Schema(
         desc: {
             type: String,
             required: true
-        }
+        },
+        members: [
+            {
+                _id: false,
+                name: String
+            }
+        ]
     }, { versionKey: false }
 );
 

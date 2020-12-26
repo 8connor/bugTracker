@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Card from "react-bootstrap/Card";
-import Form from 'react-bootstrap/Form';
 import Container from "react-bootstrap/container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -23,7 +22,10 @@ function EditProject() {
 
                 setList(res.data);
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                console.log(err)
+                setEmpty(true);
+            });
 
         anime({
             targets: ".projCard",

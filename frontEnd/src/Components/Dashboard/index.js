@@ -1,12 +1,28 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import NavigationList from "./NavigationList";
-
+import { useAuth0 } from "@auth0/auth0-react";
+import Axios from "axios";
 
 function Dashboard() {
+    const { isAuthenticated, user } = useAuth0();
+
+    useEffect(() => {
+        
+        if (isAuthenticated === true) {
+            Axios.post("/api/addUser", user)
+                .then(response => {
+                    console.log(response.data)
+                })
+                .catch(err => console.log(err))
+        } else {
+            console.log("not authenticated")
+        }
+    }, [])
+
     return (
         <Container>
             <Row>
