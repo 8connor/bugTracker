@@ -14,7 +14,10 @@ const ProjectSchema = new Schema(
         members: [
             {
                 _id: false,
-                name: String
+                name: {
+                    type: String,
+                    unique: true
+                }
             }
         ]
     }, { versionKey: false }

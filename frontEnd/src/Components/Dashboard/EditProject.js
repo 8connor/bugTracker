@@ -121,7 +121,6 @@ function EditProject() {
                                                                 </Col>
                                                             </Row>
                                                         </Container>
-
                                                     </ListGroup.Item>
                                                 </>
                                             )

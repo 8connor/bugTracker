@@ -29,4 +29,18 @@ Projects.post("/deleteProj", (req, res) => {
         .catch(err => console.log(err))
 });
 
+Projects.post("/addProjUser", (req, res) => {
+    console.log(req.body);
+
+    db.Projects
+        .updateOne(
+            { _id: req.body._id },
+            { $push: { members: { name: req.body.name } } }
+        )
+        .then(data => {
+            console.log(data)
+        })
+        .catch(err => console.log(err));
+});
+
 module.exports = Projects

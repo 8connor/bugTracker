@@ -20,5 +20,19 @@ Projects.post("/addUser", (req, res) => {
         })
 });
 
+Projects.post("/searchUsers", (req, res) => {
+    console.log(req.body);
+
+    db.Users.find({
+        name: { $regex: req.body.name, $options: "i" }
+    })
+    .lean()
+    .then(response => {
+        console.log(response);
+
+        res.json(response);
+    })
+    .catch(err => console.log(err));
+});
 
 module.exports = Projects
