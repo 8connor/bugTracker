@@ -26,7 +26,7 @@ function Dashboard() {
     return (
         <Container>
             <Row>
-                <Col className="mt-5" sm={{ span: 12, offset: 0 }} md={{ span: 12, offset: 0 }} lg={{ span: 12, offset: 0 }}>
+                <Col className="mt-2" sm={{ span: 12, offset: 0 }} md={{ span: 12, offset: 0 }} lg={{ span: 12, offset: 0 }}>
                     <Card border="primary" className="shadow">
                         <Card.Title className="bg-dark text-light">
                             <p className="ml-3 mt-2">

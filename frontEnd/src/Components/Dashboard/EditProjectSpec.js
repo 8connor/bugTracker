@@ -27,10 +27,10 @@ function EditProjectSpec(props) {
         }
 
         Axios.post("/api/addProjUser", obj)
-        .then(response => {
-            console.log(response.data);
-        })
-        .catch(err => console.log(err));
+            .then(response => {
+                console.log(response.data);
+            })
+            .catch(err => console.log(err));
     }
 
     const handleChange = (e) => {
@@ -61,65 +61,7 @@ function EditProjectSpec(props) {
                     <h4><u>Project name:</u></h4>
                     <h4>{props.projData.name}</h4>
                 </Col>
-                <Col
-                    sm={{ span: 6, offset: 0 }}
-                    md={{ span: 6, offset: 0 }}
-                    lg={{ span: 6, offset: 0 }}
 
-                    className="text-center"
-                >
-                    <h4>
-                        <u>
-                            Member list:
-                        </u>
-                    </h4>
-                    <br />
-                    <ul>
-                        {props.projData.members.length === 0 ?
-                            <p>Empty</p>
-                            :
-                            props.projData.members.map((names, i) =>
-                                <li key={i}>{names.name}</li>
-                            )
-                        }
-                    </ul>
-                    <Row className="justify-content-center">
-                        {search ?
-                            null
-                            :
-                            <Button onClick={handleSearch}>Add Member</Button>
-                        }
-                    </Row>
-                    {search ?
-                        <Row className="justify-content-center mt-1">
-                            <Col
-                                sm={{ span: 8, offset: 0 }}
-                                md={{ span: 8, offset: 0 }}
-                                lg={{ span: 8, offset: 0 }}
-                            >
-                                <Form.Group>
-                                    <Form.Control size="sm" type="text" placeholder="Name" onChange={(e) => handleChange(e)} />
-                                </Form.Group>
-                            </Col>
-                            <Col
-                                sm={{ span: 12, offset: 0 }}
-                                md={{ span: 12, offset: 0 }}
-                                lg={{ span: 12, offset: 0 }}
-                            >
-                                <ul>
-                                    {users.length === 0 ?
-                                        null
-                                        :
-                                        users.map((user, i) =>
-                                            <li key={i}>{user.name} <Button onClick={() => handleAdd(user.name)}>Add</Button></li>
-                                        )
-                                    }
-                                </ul>
-                            </Col>
-                        </Row> : null
-                    }
-
-                </Col>
             </Row>
             <Row>
                 <Col
@@ -137,7 +79,59 @@ function EditProjectSpec(props) {
                     <p>{props.projData.desc}</p>
                 </Col>
             </Row>
-            <Row>
+            <Row className="justify-content-center">
+                <Col
+                    sm={{ span: 6, offset: 0 }}
+                    md={{ span: 6, offset: 0 }}
+                    lg={{ span: 6, offset: 0 }}
+
+                    className="text-center"
+                >
+                  
+                    <h4>
+                   
+                        Member list:
+                     
+                    </h4>
+                  
+                    {props.projData.members.length === 0 ?
+                        <p>Empty</p>
+                        :
+                        props.projData.members.map((names, i) =>
+                            <p key={i}>{names.name}</p>
+                        )
+                    }
+              
+                        
+                </Col>
+                <Col
+                    sm={{ span: 6, offset: 0 }}
+                    md={{ span: 6, offset: 0 }}
+                    lg={{ span: 6, offset: 0 }}
+                >
+                    {search ?
+                            null
+                            :
+                            <Button onClick={handleSearch}>Add Member</Button>
+                        }
+                    {search ?
+                           <> 
+                                <Form.Group>
+                                    <Form.Control size="sm" type="text" placeholder="Name" onChange={(e) => handleChange(e)} />
+                                </Form.Group>
+                           
+                                {users.length === 0 ?
+                                    null
+                                    :
+                                    users.map((user, i) =>
+                                        <p key={i}>{user.name} <Button onClick={() => handleAdd(user.name)}>Add</Button></p>
+                                    )
+                                }
+                          </>
+                         : null
+                    }
+                </Col>
+               
             </Row>
         </Container >
     )

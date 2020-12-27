@@ -77,7 +77,7 @@ function EditProject() {
                                     <Button onClick={() => setEdit(false)}>Back</Button>
                                 </Col>
                             </Row>
-                            <Row>
+                            <Row className="editProj">
                                 <EditProjectSpec projData={selected} />
                             </Row>
                         </Container>
