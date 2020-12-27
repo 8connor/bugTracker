@@ -79,7 +79,7 @@ function EditProjectSpec(props) {
                             <p>Empty</p>
                             :
                             props.projData.members.map((names, i) =>
-                                <li key={i}>{names}</li>
+                                <li key={i}>{names.name}</li>
                             )
                         }
                     </ul>
