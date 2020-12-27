@@ -6,7 +6,7 @@ import Col from "react-bootstrap/Col";
 import anime from "animejs/lib/anime.js";
 import Axios from "axios";
 
-function OpenTickets() {
+function SubmitTicket() {
 
     useEffect(() => {
         Axios.get("/api/")
@@ -24,14 +24,14 @@ function OpenTickets() {
         <Card>
             <Card.Title className="bg-dark text-light">
                 <p className="ml-3 mt-2">
-                    Open tickets
+                    Submit ticket
                 </p>
             </Card.Title>
             <Card.Body className="projCard">
                 <Container>
                     <Row>
                         <Col>
-                            
+
                         </Col>
                     </Row>
                 </Container>
@@ -40,4 +40,4 @@ function OpenTickets() {
     )
 }
 
-export default OpenTickets;
+export default SubmitTicket;

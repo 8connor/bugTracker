@@ -1,14 +1,14 @@
 const express = require("express");
-const Projects = express.Router();
+const Users = express.Router();
 const db = require("../Models/index");
 
 // ========= Get routes ============
-Projects.get("/users", (req, res) => {
+Users.get("/users", (req, res) => {
     db.Users.find({}).lean().then(response => res.json(response)).catch(err => console.log(err))
 });
 
 // ========= Post routes ============
-Projects.post("/addUser", (req, res) => {
+Users.post("/addUser", (req, res) => {
     console.log(req.body);
 
     db.Users
@@ -20,7 +20,7 @@ Projects.post("/addUser", (req, res) => {
         })
 });
 
-Projects.post("/searchUsers", (req, res) => {
+Users.post("/searchUsers", (req, res) => {
     console.log(req.body);
 
     db.Users.find({
@@ -35,4 +35,4 @@ Projects.post("/searchUsers", (req, res) => {
     .catch(err => console.log(err));
 });
 
-module.exports = Projects
+module.exports = Users

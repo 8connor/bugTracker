@@ -7,11 +7,14 @@ import Row from "react-bootstrap/Row";
 import CreateProject from "./CreateProject";
 import EditProject from "./EditProject";
 import OpenTickets from "./OpenTickets";
+import SubmitTicket from "./SubmitTicket";
+
 
 function NavigationList() {
     const [create, setCreate] = useState(true);
     const [edit, setEdit] = useState(false);
     const [tickets, setTickets] = useState(false);
+    const [submitTicket, setSubmitTicket] = useState(false);
 
     const handleClick = (e) => {
 
@@ -19,16 +22,25 @@ function NavigationList() {
             case "Create project":
                 setCreate(true);
                 setTickets(false);
+                setSubmitTicket(false);
                 setEdit(false);
                 break;
             case "Edit projects":
                 setCreate(false);
                 setTickets(false);
+                setSubmitTicket(false);
                 setEdit(true);
                 break;
             case "Open tickets":
                 setCreate(false);
                 setTickets(true);
+                setSubmitTicket(false);
+                setEdit(false);
+                break;
+            case "Submit ticket":
+                setCreate(false);
+                setTickets(false);
+                setSubmitTicket(true);
                 setEdit(false);
                 break;
             default:
@@ -39,7 +51,7 @@ function NavigationList() {
 
     return (
         <>
-            <Col sm={{ span: 12, offset: 0 }} md={{ span: 4, offset: 0 }} lg={{ span: 4, offset: 0 }}>
+            <Col sm={{ span: 12, offset: 0 }} md={{ span: 3, offset: 0 }} lg={{ span: 3, offset: 0 }}>
                 <Card>
                     <Card.Title className="bg-dark text-light">
                         <p className="ml-3 mt-2">
@@ -60,6 +72,9 @@ function NavigationList() {
                                         <ListGroup.Item action className={tickets ? "active" : null} onClick={(e) => { handleClick(e) }}>
                                             Open tickets
                                         </ListGroup.Item>
+                                        <ListGroup.Item action className={submitTicket ? "active" : null} onClick={(e) => { handleClick(e) }}>
+                                            Submit ticket
+                                        </ListGroup.Item>
                                     </ListGroup>
                                 </Col>
                             </Row>
@@ -69,8 +84,8 @@ function NavigationList() {
             </Col>
             <Col
                 sm={{ span: 12, offset: 0 }}
-                md={{ span: 8, offset: 0 }}
-                lg={{ span: 8, offset: 0 }}
+                md={{ span: 9, offset: 0 }}
+                lg={{ span: 9, offset: 0 }}
 
             >
                 {
@@ -85,9 +100,15 @@ function NavigationList() {
                         :
                         null
                 }
-                 {
+                {
                     tickets ?
                         <OpenTickets />
+                        :
+                        null
+                }
+                {
+                    submitTicket ?
+                        <SubmitTicket />
                         :
                         null
                 }
