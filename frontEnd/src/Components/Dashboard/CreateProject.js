@@ -12,7 +12,7 @@ function CreateProject() {
     const [projName, setProjName] = useState("");
     const [desc, setDesc] = useState("");
 
-    useEffect(()=> {
+    useEffect(() => {
         anime({
             targets: ".projCard",
             scale: [0, 1],
@@ -34,12 +34,14 @@ function CreateProject() {
         };
 
         Axios.post("/api/createProj", projObj)
-        .then(response => {
-            console.log(response.data)
-            setProjName("");
-            setDesc("")
-        })
-        .catch(err => console.log(err));
+            .then(response => {
+                console.log(response.data)
+                setProjName("");
+                setDesc("");
+
+                document.querySelectorAll(".entry").forEach(text => text.value = "");
+            })
+            .catch(err => console.log(err));
     }
 
     return (
@@ -55,10 +57,10 @@ function CreateProject() {
                         <Col>
                             <Form.Group>
                                 <p>Project name:</p>
-                                <Form.Control size="md" type="text" placeholder="Project name" onChange={(e) => setProjName(e.target.value)}/>
+                                <Form.Control size="md" type="text" placeholder="Project name" className="entry" onChange={(e) => setProjName(e.target.value)} />
                                 <br />
                                 <p>Project description:</p>
-                                <Form.Control as="textarea" rows={2} placeholder="Project description" style={config} onChange={(e) => setDesc(e.target.value)} />
+                                <Form.Control as="textarea" rows={2} placeholder="Project description" className="entry" style={config} onChange={(e) => setDesc(e.target.value)} />
                             </Form.Group>
                         </Col>
                     </Row>

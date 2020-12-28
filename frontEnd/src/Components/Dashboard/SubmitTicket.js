@@ -52,6 +52,8 @@ function SubmitTicket() {
                 setSelected("");
                 setDescription("");
                 setSeverity("");
+
+                document.querySelectorAll(".entry").forEach(text => text.value = "");
             })
             .catch(err => console.log(err))
     }
@@ -78,10 +80,10 @@ function SubmitTicket() {
                                 </DropdownButton>
                                 <br />
                                 <p>Bug description:</p>
-                                <Form.Control as="textarea" rows={3} placeholder="Bug description" onChange={(e) => setDescription(e.target.value)} style={config} />
+                                <Form.Control as="textarea" rows={3} placeholder="Bug description" className="entry" onChange={(e) => setDescription(e.target.value)} style={config} />
                                 <br />
                                 <p>Bug severity:</p>
-                                <Form.Control size="md" type="text" placeholder="Bug severity" onChange={(e) => setSeverity(e.target.value)} />
+                                <Form.Control size="md" type="text" placeholder="Bug severity" className="entry" onChange={(e) => setSeverity(e.target.value)} />
                             </Form.Group>
                         </Col>
                     </Row>
