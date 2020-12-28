@@ -38,8 +38,6 @@ function SubmitTicket() {
     }, []);
 
     const handleSubmit = () => {
-        console.log(selected)
-
         let obj = {
             project: selected,
             description: description,
@@ -83,7 +81,11 @@ function SubmitTicket() {
                                 <Form.Control as="textarea" rows={3} placeholder="Bug description" className="entry" onChange={(e) => setDescription(e.target.value)} style={config} />
                                 <br />
                                 <p>Bug severity:</p>
-                                <Form.Control size="md" type="text" placeholder="Bug severity" className="entry" onChange={(e) => setSeverity(e.target.value)} />
+                                <DropdownButton title={`${severity === "" ? `select severity` : severity}`}>
+                                    <Dropdown.Item onClick={(e) => setSeverity(e.target.innerHTML)}>Minor</Dropdown.Item>
+                                    <Dropdown.Item onClick={(e) => setSeverity(e.target.innerHTML)}>Moderate</Dropdown.Item>
+                                    <Dropdown.Item onClick={(e) => setSeverity(e.target.innerHTML)}>Severe</Dropdown.Item>
+                                </DropdownButton>
                             </Form.Group>
                         </Col>
                     </Row>

@@ -13,6 +13,7 @@ const TicketSchema = new Schema(
         },
         severity: {
             type: String,
+            enum: ['Minor', 'Moderate', 'Severe'],
             required: true
         }
     }, { versionKey: false }
