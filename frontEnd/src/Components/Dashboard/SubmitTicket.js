@@ -38,6 +38,8 @@ function SubmitTicket() {
     }, []);
 
     const handleSubmit = () => {
+        console.log(selected)
+
         let obj = {
             project: selected,
             description: description,
