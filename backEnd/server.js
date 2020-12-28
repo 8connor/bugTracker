@@ -3,7 +3,7 @@ const app = express();
 const path = require("path");
 const mongoose = require("mongoose");
 const PORT = 3001;
-const { Projects, Users } = require("./Routes/index.js");
+const { Projects, Users, Tickets } = require("./Routes/index.js");
 
 mongoose.connect(
     `mongodb://localhost:27017/bugTracker`,
@@ -17,6 +17,7 @@ app.use(express.json());
 
 app.use("/api", Projects)
 app.use("/api", Users)
+app.use("/api", Tickets)
 
 
 app.get("*", (req, res) => {
