@@ -16,7 +16,6 @@ function OpenTickets() {
     useEffect(() => {
         Axios.get("/api/tickets")
             .then(response => {
-                console.log(response.data)
                 setEmpty(response.data.length === 0 ? true : false)
                 setTickets(response.data)
             })

@@ -23,8 +23,6 @@ function SubmitTicket() {
     useEffect(() => {
         Axios.get("/api/projects")
             .then(response => {
-                console.log(response.data);
-
                 setProjects(response.data);
             })
             .catch(err => console.log(err));
@@ -69,7 +67,7 @@ function SubmitTicket() {
                         <Col>
                             <Form.Group>
                                 <p>Project name:</p>
-                                <DropdownButton title={`${selected.length === 0 ? `select a project` : selected}`}>
+                                <DropdownButton title={`${selected === "" ? `select a project` : selected}`}>
                                     {projects.length === 0 ? null :
                                         projects.map((item, i) =>
                                             <Dropdown.Item onClick={() => setSelected(item.name)}>{item.name}</Dropdown.Item>
