@@ -7,6 +7,7 @@ import anime from "animejs/lib/anime.js";
 import ListGroup from 'react-bootstrap/ListGroup'
 import Spinner from 'react-bootstrap/Spinner';
 import Axios from "axios";
+import Button from "react-bootstrap/esm/Button";
 
 function OpenTickets() {
     const [tickets, setTickets] = useState([]);
@@ -57,11 +58,25 @@ function OpenTickets() {
                                                 <Container>
                                                     <Row>
                                                         <Col
-                                                            sm={{ span: 6, offset: 0 }}
-                                                            md={{ span: 6, offset: 0 }}
-                                                            lg={{ span: 6, offset: 0 }}
+                                                            sm={{ span: 4, offset: 0 }}
+                                                            md={{ span: 4, offset: 0 }}
+                                                            lg={{ span: 4, offset: 0 }}
                                                         >
-                                                            {item.project}
+                                                            <p>Project: {item.project}</p>
+                                                        </Col>
+                                                        <Col
+                                                            sm={{ span: 4, offset: 0 }}
+                                                            md={{ span: 4, offset: 0 }}
+                                                            lg={{ span: 4, offset: 0 }}
+                                                        >
+                                                            <p>severity:  {item.severity}</p>
+                                                        </Col>
+                                                        <Col
+                                                            sm={{ span: 4, offset: 0 }}
+                                                            md={{ span: 4, offset: 0 }}
+                                                            lg={{ span: 4, offset: 0 }}
+                                                        >
+                                                            <Button>view more</Button>
                                                         </Col>
                                                     </Row>
                                                 </Container>
