@@ -38,8 +38,6 @@ function SubmitTicket() {
     }, []);
 
     const handleSubmit = () => {
-        console.log(description)
-
         let obj = {
             project: selected,
             description: description,
@@ -49,6 +47,9 @@ function SubmitTicket() {
         Axios.post("/api/makeTicket", obj)
             .then(response => {
                 console.log(response);
+                setSelected("");
+                setDescription("");
+                setSeverity("");
             })
             .catch(err => console.log(err))
     }
@@ -72,7 +73,6 @@ function SubmitTicket() {
                                             <Dropdown.Item onClick={() => setSelected(item.name)}>{item.name}</Dropdown.Item>
                                         )
                                     }
-
                                 </DropdownButton>
                                 <br />
                                 <p>Bug description:</p>
@@ -84,7 +84,7 @@ function SubmitTicket() {
                         </Col>
                     </Row>
                     <Row className="justify-content-center">
-                        <Button onClick={() => handleSubmit()}>Submit</Button>
+                        <Button onClick={handleSubmit}>Submit</Button>
                     </Row>
                 </Container>
             </Card.Body>

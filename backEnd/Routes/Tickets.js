@@ -7,10 +7,7 @@ Tickets.get("/tickets", (req, res) => {
     db.Tickets
         .find({})
         .lean()
-        .then(response => {
-            console.log(response);
-            res.json(response);
-        })
+        .then(response => res.json(response))
         .catch(err => console.log(err))
 });
 
@@ -18,8 +15,6 @@ Tickets.get("/tickets", (req, res) => {
 
 Tickets.post("/makeTicket", (req, res) => {
     const { project, description, severity } = req.body
-
-    console.log(req.body)
 
     db.Tickets
         .create({
