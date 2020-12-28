@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Card from "react-bootstrap/Card";
 import Form from 'react-bootstrap/Form';
 import Container from "react-bootstrap/container";
@@ -9,6 +9,8 @@ import anime from "animejs/lib/anime.js";
 import Axios from "axios";
 
 function CreateProject() {
+    const [projName, setProjName] = useState("");
+    const [desc, setDesc] = useState("");
 
     useEffect(()=> {
         anime({
@@ -27,13 +29,15 @@ function CreateProject() {
     const handleSubmit = () => {
         // grabbing the data from the text inputs.
         let projObj = {
-            name: document.getElementById("projName").value,
-            desc: document.getElementById("projDesc").value
+            name: projName,
+            desc: desc
         };
 
         Axios.post("/api/createProj", projObj)
         .then(response => {
             console.log(response.data)
+            setProjName("");
+            setDesc("")
         })
         .catch(err => console.log(err));
     }
@@ -51,10 +55,10 @@ function CreateProject() {
                         <Col>
                             <Form.Group>
                                 <p>Project name:</p>
-                                <Form.Control size="md" type="text" placeholder="Project name" id="projName" />
+                                <Form.Control size="md" type="text" placeholder="Project name" onChange={(e) => setProjName(e.target.value)}/>
                                 <br />
                                 <p>Project description:</p>
-                                <Form.Control as="textarea" rows={2} placeholder="Project description" style={config} id="projDesc"/>
+                                <Form.Control as="textarea" rows={2} placeholder="Project description" style={config} onChange={(e) => setDesc(e.target.value)} />
                             </Form.Group>
                         </Col>
                     </Row>
