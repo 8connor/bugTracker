@@ -13,6 +13,8 @@ import Button from "react-bootstrap/esm/Button";
 function SubmitTicket() {
     const [projects, setProjects] = useState([]);
     const [selected, setSelected] = useState("");
+    const [description, setDescription] = useState("");
+    const [severity, setSeverity] = useState("");
 
     const config = {
         resize: "none"
@@ -36,10 +38,12 @@ function SubmitTicket() {
     }, []);
 
     const handleSubmit = () => {
+        console.log(description)
+
         let obj = {
             project: selected,
-            description: document.getElementById("description"),
-            severity: document.getElementById("severity")
+            description: description,
+            severity: severity
         }
 
         Axios.post("/api/makeTicket", obj)
@@ -72,15 +76,15 @@ function SubmitTicket() {
                                 </DropdownButton>
                                 <br />
                                 <p>Bug description:</p>
-                                <Form.Control as="textarea" rows={3} placeholder="Bug description" id="description" style={config} />
+                                <Form.Control as="textarea" rows={3} placeholder="Bug description" onChange={(e) => setDescription(e.target.value)} style={config} />
                                 <br />
                                 <p>Bug severity:</p>
-                                <Form.Control size="md" type="text" placeholder="Bug severity" id="severity" />
+                                <Form.Control size="md" type="text" placeholder="Bug severity" onChange={(e) => setSeverity(e.target.value)} />
                             </Form.Group>
                         </Col>
                     </Row>
                     <Row className="justify-content-center">
-                        <Button onClick={handleSubmit}>Submit</Button>
+                        <Button onClick={() => handleSubmit()}>Submit</Button>
                     </Row>
                 </Container>
             </Card.Body>

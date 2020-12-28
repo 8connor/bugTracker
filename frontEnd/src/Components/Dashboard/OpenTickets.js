@@ -6,7 +6,6 @@ import Col from "react-bootstrap/Col";
 import anime from "animejs/lib/anime.js";
 import ListGroup from 'react-bootstrap/ListGroup'
 import Spinner from 'react-bootstrap/Spinner';
-import Button from "react-bootstrap/Button";
 import Axios from "axios";
 
 function OpenTickets() {
@@ -62,7 +61,7 @@ function OpenTickets() {
                                                             md={{ span: 6, offset: 0 }}
                                                             lg={{ span: 6, offset: 0 }}
                                                         >
-                                                            {item.name}
+                                                            {item.project}
                                                         </Col>
                                                     </Row>
                                                 </Container>

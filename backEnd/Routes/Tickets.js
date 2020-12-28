@@ -19,6 +19,8 @@ Tickets.get("/tickets", (req, res) => {
 Tickets.post("/makeTicket", (req, res) => {
     const { project, description, severity } = req.body
 
+    console.log(req.body)
+
     db.Tickets
         .create({
             project: project,
