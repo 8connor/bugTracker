@@ -27,7 +27,7 @@ function CreateProject() {
     }
     // this will submit the information for the new project using a post.
     const handleSubmit = () => {
-        // grabbing the data from the text inputs.
+        // grabbing the data from the state of each input.
         let projObj = {
             name: projName,
             desc: desc

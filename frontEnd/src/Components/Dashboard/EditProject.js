@@ -64,82 +64,76 @@ function EditProject() {
                 </p>
             </Card.Title>
             <Card.Body className="projCard">
-                {
-                    edit ?
+                {edit ?
+                    <Container>
+                        <Row>
+                            <Col
+                                sm={{ span: 2, offset: 0 }}
+                                md={{ span: 2, offset: 0 }}
+                                lg={{ span: 2, offset: 0 }}
+                            >
+                                <Button onClick={() => setEdit(false)}>Back</Button>
+                            </Col>
+                        </Row>
+                        <Row className="editProj">
+                            <EditProjectSpec projData={selected} />
+                        </Row>
+                    </Container>
+                    :
+                    <Container>
+                        <Row className="justify-content-center">
+                            <Col
+                                sm={{ span: 12, offset: 0 }}
+                                md={{ span: 12, offset: 0 }}
+                                lg={{ span: 12, offset: 0 }}
+                            >
+                                <ListGroup variant="flush">
+                                    {list.length === 0 ?
+                                        empty ? null :
+                                            <Row className="justify-content-center">
+                                                <Spinner animation="border" />
+                                            </Row>
+                                        : list.map((item, i) =>
+                                            <>
+                                                <ListGroup.Item key={i} id={i}>
+                                                    <Container>
+                                                        <Row>
+                                                            <Col
+                                                                sm={{ span: 6, offset: 0 }}
+                                                                md={{ span: 6, offset: 0 }}
+                                                                lg={{ span: 6, offset: 0 }}
+                                                            >
+                                                                {item.name}
+                                                            </Col>
+                                                            <Col
+                                                                sm={{ span: 6, offset: 0 }}
+                                                                md={{ span: 6, offset: 0 }}
+                                                                lg={{ span: 6, offset: 0 }}
 
-                        <Container>
-                            <Row>
-                                <Col
-                                    sm={{ span: 2, offset: 0 }}
-                                    md={{ span: 2, offset: 0 }}
-                                    lg={{ span: 2, offset: 0 }}
-                                >
-                                    <Button onClick={() => setEdit(false)}>Back</Button>
-                                </Col>
-                            </Row>
-                            <Row className="editProj">
-                                <EditProjectSpec projData={selected} />
-                            </Row>
-                        </Container>
-
-                        :
-
-                        <Container>
-                            <Row className="justify-content-center">
-                                <Col
-                                    sm={{ span: 12, offset: 0 }}
-                                    md={{ span: 12, offset: 0 }}
-                                    lg={{ span: 12, offset: 0 }}
-                                >
-                                    <ListGroup variant="flush">
-                                        {list.length === 0 ?
-                                            empty ? null :
-                                                <Row className="justify-content-center">
-                                                    <Spinner animation="border" />
-                                                </Row>
-                                            : list.map((item, i) =>
-                                                <>
-                                                    <ListGroup.Item key={i} id={i}>
-                                                        <Container>
-                                                            <Row>
-                                                                <Col
-                                                                    sm={{ span: 6, offset: 0 }}
-                                                                    md={{ span: 6, offset: 0 }}
-                                                                    lg={{ span: 6, offset: 0 }}
-                                                                >
-                                                                    {item.name}
-                                                                </Col>
-                                                                <Col
-                                                                    sm={{ span: 6, offset: 0 }}
-                                                                    md={{ span: 6, offset: 0 }}
-                                                                    lg={{ span: 6, offset: 0 }}
-
-                                                                    className="buttonCol"
-                                                                >
-                                                                    <Button variant="success" onClick={() => handleEdit(item)}>edit</Button>
-                                                                    <Button variant="danger" onClick={() => handleDelete(item._id, i)}>delete</Button>
-                                                                </Col>
-                                                            </Row>
-                                                        </Container>
-                                                    </ListGroup.Item>
-                                                </>
-                                            )
-                                        }
-                                    </ListGroup>
-                                </Col>
-                            </Row>
-                            <Row className="justify-content-center">
-                                {empty ?
-                                    <>
-                                        <p className="text-danger">Empty</p>
-                                    </>
-                                    : null
-                                }
-                            </Row>
-                        </Container>
-
+                                                                className="buttonCol"
+                                                            >
+                                                                <Button variant="success" onClick={() => handleEdit(item)}>edit</Button>
+                                                                <Button variant="danger" onClick={() => handleDelete(item._id, i)}>delete</Button>
+                                                            </Col>
+                                                        </Row>
+                                                    </Container>
+                                                </ListGroup.Item>
+                                            </>
+                                        )
+                                    }
+                                </ListGroup>
+                            </Col>
+                        </Row>
+                        <Row className="justify-content-center">
+                            {empty ?
+                                <>
+                                    <p className="text-danger">Empty</p>
+                                </>
+                                : null
+                            }
+                        </Row>
+                    </Container>
                 }
-
             </Card.Body>
         </Card>
     )
