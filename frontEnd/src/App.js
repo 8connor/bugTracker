@@ -19,18 +19,18 @@ function App() {
     <Router>
       <TopNav />
       <Switch>
-        <Route exact path="/">
-          <HomePage />
-        </Route>
-        <Route exact path="/dashboard">
-          <Dashboard />
-        </Route>
-        <Route exact path="/about">
-          <About />
-        </Route>
-        <Route exact path="/help">
-          <Help />
-        </Route>
+          <Route exact path="/">
+            <HomePage />
+          </Route>
+          <Route exact path="/dashboard">
+            <Dashboard />
+          </Route>
+          <Route exact path="/about">
+            <About />
+          </Route>
+          <Route exact path="/help">
+            <Help />
+          </Route>
       </Switch>
       <Footer />
     </Router>

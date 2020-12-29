@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -11,7 +11,7 @@ function Dashboard() {
     const { isAuthenticated, user } = useAuth0();
 
     useEffect(() => {
-        
+
         if (isAuthenticated === true) {
             Axios.post("/api/addUser", user)
                 .then(response => {
@@ -24,7 +24,7 @@ function Dashboard() {
     }, [])
 
     return (
-        <Container>
+        <Container className="mb-5">
             <Row>
                 <Col className="mt-2" sm={{ span: 12, offset: 0 }} md={{ span: 12, offset: 0 }} lg={{ span: 12, offset: 0 }}>
                     <Card border="primary" className="shadow">

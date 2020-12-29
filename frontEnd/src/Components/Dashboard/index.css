@@ -1,8 +1,8 @@
-.buttonCol button{
-    margin-right: 5px;
+.buttonCol button {
+  margin-right: 5px;
 }
 
-.editProj{
-    overflow-y: scroll;
-    height: 600px
+.editProj {
+  overflow-y: scroll;
+  height: 600px;
 }
