@@ -11,7 +11,7 @@ import Button from "react-bootstrap/esm/Button";
 
 function OpenTickets() {
     const [tickets, setTickets] = useState([]);
-    const [empty, setEmpty] = useState(true)
+    const [empty, setEmpty] = useState(false)
 
     useEffect(() => {
         Axios.get("/api/tickets")
@@ -47,10 +47,10 @@ function OpenTickets() {
                         >
                             <ListGroup variant="flush">
                                 {tickets.length === 0 ?
-                                    empty ?
-                                        <Row className="justify-content-center">
+                                    empty ? null
+                                        : <Row className="justify-content-center">
                                             <Spinner animation="border" />
-                                        </Row> : null
+                                        </Row>
                                     : tickets.map((item, i) =>
                                         <>
                                             <ListGroup.Item key={i} id={i}>
@@ -85,6 +85,14 @@ function OpenTickets() {
                                 }
                             </ListGroup>
                         </Col>
+                    </Row>
+                    <Row className="justify-content-center">
+                        {empty ?
+                            <>
+                                <p className="text-danger">Empty</p>
+                            </>
+                            : null
+                        }
                     </Row>
                 </Container>
             </Card.Body>

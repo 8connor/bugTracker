@@ -68,7 +68,8 @@ function SubmitTicket() {
                             <Form.Group>
                                 <p>Project name:</p>
                                 <DropdownButton title={`${selected === "" ? `select a project` : selected}`}>
-                                    {projects.length === 0 ? null :
+                                    {projects.length === 0 ? <Dropdown.Item disabled>Empty</Dropdown.Item>
+                                        :
                                         projects.map((item, i) =>
                                             <Dropdown.Item onClick={() => setSelected(item.name)}>{item.name}</Dropdown.Item>
                                         )
