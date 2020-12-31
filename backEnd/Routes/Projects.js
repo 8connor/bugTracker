@@ -12,8 +12,6 @@ Projects.get("/projects", (req, res) => {
 });
 // ========= Post routes ============
 Projects.post("/createProj", (req, res) => {
-    console.log(req.body);
-
     db.Projects
         .create(req.body)
         .then(data => res.json(data))

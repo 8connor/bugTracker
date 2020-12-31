@@ -9,8 +9,6 @@ Users.get("/users", (req, res) => {
 
 // ========= Post routes ============
 Users.post("/addUser", (req, res) => {
-    console.log(req.body);
-
     db.Users
         .create({ name: req.body.name })
         .then(data => {
@@ -23,16 +21,20 @@ Users.post("/addUser", (req, res) => {
 Users.post("/searchUsers", (req, res) => {
     console.log(req.body);
 
+    if (req.body.name === "" || req.body.name === " ") {
+        return
+    };
+
     db.Users.find({
         name: { $regex: req.body.name, $options: "i" }
     })
-    .lean()
-    .then(response => {
-        console.log(response);
+        .lean()
+        .then(response => {
+            console.log(response);
 
-        res.json(response);
-    })
-    .catch(err => console.log(err));
+            res.json(response);
+        })
+        .catch(err => console.log(err));
 });
 
 module.exports = Users

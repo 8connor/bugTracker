@@ -3,6 +3,10 @@ const Schema = mongoose.Schema;
 
 const ProjectSchema = new Schema(
     {
+        owner: {
+            type: String,
+            required: true
+        },
         name: {
             type: String,
             required: true
