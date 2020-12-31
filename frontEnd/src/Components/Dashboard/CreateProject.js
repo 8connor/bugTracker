@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import Card from "react-bootstrap/Card";
 import Form from 'react-bootstrap/Form';
 import Container from "react-bootstrap/container";
@@ -7,10 +7,13 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import anime from "animejs/lib/anime.js";
 import Axios from "axios";
+import { useAuth0 } from "@auth0/auth0-react";
 
 function CreateProject() {
     const [projName, setProjName] = useState("");
     const [desc, setDesc] = useState("");
+
+    const { user } = useAuth0();
 
     useEffect(() => {
         anime({
@@ -29,6 +32,7 @@ function CreateProject() {
     const handleSubmit = () => {
         // grabbing the data from the state of each input.
         let projObj = {
+            owner: user.name,
             name: projName,
             desc: desc
         };

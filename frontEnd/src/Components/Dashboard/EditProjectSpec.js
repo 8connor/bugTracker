@@ -14,10 +14,6 @@ function EditProjectSpec(props) {
     const [value, setValue] = useState("");
     const [users, setUsers] = useState([]);
 
-    const handleSearch = () => {
-        setSearch(true);
-    }
-
     const handleAdd = (a) => {
         setSearch(false);
 
@@ -112,7 +108,7 @@ function EditProjectSpec(props) {
                     {search ?
                             null
                             :
-                            <Button onClick={handleSearch}>Add Member</Button>
+                            <Button onClick={() => setSearch(true)}>Add Member</Button>
                         }
                     {search ?
                            <> 

@@ -8,10 +8,12 @@ import ListGroup from 'react-bootstrap/ListGroup'
 import Spinner from 'react-bootstrap/Spinner';
 import Axios from "axios";
 import Button from "react-bootstrap/esm/Button";
+import OpenTicketsView from "./OpenTicketsView.js";
 
 function OpenTickets() {
     const [tickets, setTickets] = useState([]);
-    const [empty, setEmpty] = useState(false)
+    const [empty, setEmpty] = useState(false);
+    const [view, setView] = useState(false);
 
     useEffect(() => {
         Axios.get("/api/tickets")
@@ -29,7 +31,6 @@ function OpenTickets() {
         });
     }, []);
 
-
     return (
         <Card>
             <Card.Title className="bg-dark text-light">
@@ -38,6 +39,12 @@ function OpenTickets() {
                 </p>
             </Card.Title>
             <Card.Body className="projCard">
+                {
+                    view ?
+                        <OpenTicketsView />
+                        :
+                        null
+                }
                 <Container>
                     <Row>
                         <Col
@@ -75,7 +82,7 @@ function OpenTickets() {
                                                             md={{ span: 4, offset: 0 }}
                                                             lg={{ span: 4, offset: 0 }}
                                                         >
-                                                            <Button>view more</Button>
+                                                            <Button onClick={() => setView(true)}>view more</Button>
                                                         </Col>
                                                     </Row>
                                                 </Container>
