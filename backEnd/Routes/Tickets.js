@@ -14,7 +14,7 @@ Tickets.get("/tickets", (req, res) => {
 // ========= Post routes ============
 
 Tickets.post("/makeTicket", (req, res) => {
-    const { project, description, severity } = req.body
+    const { project, description, severity } = req.body;
 
     db.Tickets
         .create({
