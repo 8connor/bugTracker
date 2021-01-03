@@ -10,12 +10,25 @@ Users.get("/users", (req, res) => {
 // ========= Post routes ============
 Users.post("/addUser", (req, res) => {
     db.Users
-        .create({ name: req.body.name })
+        .findOne({ name: req.body.name })
+        .lean()
         .then(data => {
-            res.json(data.name)
-        }).catch(err => {
-            console.log("user recorded")
-        })
+            console.log(data);
+
+            if (data) {
+                return
+            } else {
+                db.Users
+                    .create({ name: req.body.name })
+                    .then(data => {
+                        res.json(data.name)
+                    }).catch(err => {
+                        console.log("user recorded")
+                    })
+            }
+        }).catch(err => console.log(err))
+
+
 });
 
 Users.post("/searchUsers", (req, res) => {
