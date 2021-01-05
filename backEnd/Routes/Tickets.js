@@ -6,10 +6,9 @@ const db = require("../Models/index");
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, '../images');
+        cb(null, 'images');
     },
     filename: (req, file, cb) => {
-        console.log(file);
         cb(null, Date.now() + path.extname(file.originalname));
     }
 });
@@ -50,13 +49,34 @@ Tickets.post("/makeTicket", (req, res) => {
 
 //Upload route
 Tickets.post('/upload', upload.single('image'), (req, res, next) => {
-    try {
-        return res.status(201).json({
-            message: 'File uploded successfully'
-        });
-    } catch (error) {
-        console.error(error);
-    }
+    console.log("reaching the route");
+    console.log(req.body.projName);
+    console.log(req.file.filename);
+
+    db.Projects.findOne({ name: req.body.projName })
+        .lean()
+        .then(obj => {
+            if (obj) {
+                db.Images.updateOne(
+                    { project: req.body.projName },
+                    {
+                        $push: {
+                            images: {
+                                location: `images/${req.file.filename}`
+                            }
+                        }
+                    }
+                )
+                    .then(data => console.log(data))
+                    .catch(err => console.log(err));
+            }
+            else {
+                return
+            }
+        }).catch(err => console.log(err))
+    // Creating a new collection to handle images and their locations.
+
+
 });
 
 

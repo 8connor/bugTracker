@@ -36,11 +36,22 @@ function SubmitTicket() {
     }, []);
 
     const handleSubmit = () => {
+
         let obj = {
             project: selected,
             description: description,
             severity: severity
         }
+
+        var bugImage = document.getElementById("bugImage").files[0];
+        let formData = new FormData();
+
+        formData.append("image", bugImage);
+        formData.append("projName", selected)
+
+        Axios.post("/api/upload", formData)
+            .then(data => console.log(data))
+            .catch(err => console.log(err));
 
         Axios.post("/api/makeTicket", obj)
             .then(response => {
@@ -86,12 +97,9 @@ function SubmitTicket() {
                                     <Dropdown.Item onClick={(e) => setSeverity(e.target.innerHTML)}>Severe</Dropdown.Item>
                                 </DropdownButton>
                             </Form.Group>
-                            <form method="POST" action="/api/upload" enctype="multipart/form-data">
+                            <form enctype="multipart/form-data"  >
                                 <div>
-                                    <label>Select your profile picture:</label> <input type="file" name="image" />
-                                </div>
-                                <div>
-                                    <input type="submit" name="btn_upload_profile_pic" value="Upload" />
+                                    <label>Select your profile picture:</label> <input type="file" name="image" id="bugImage" />
                                 </div>
                             </form>
                         </Col>
