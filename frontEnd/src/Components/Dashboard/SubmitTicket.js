@@ -42,6 +42,11 @@ function SubmitTicket() {
             severity: severity
         }
 
+        let myForm = document.getElementById('myForm');
+        let formData = new FormData(myForm);
+
+        console.log(formData)
+
         Axios.post("/api/makeTicket", obj)
             .then(response => {
                 console.log(response);
@@ -86,7 +91,7 @@ function SubmitTicket() {
                                     <Dropdown.Item onClick={(e) => setSeverity(e.target.innerHTML)}>Severe</Dropdown.Item>
                                 </DropdownButton>
                             </Form.Group>
-                            <form method="POST" action="/api/upload" enctype="multipart/form-data">
+                            <form method="POST" action="/api/upload" encType="multipart/form-data" id="myForm">
                                 <div>
                                     <label>Select your profile picture:</label> <input type="file" name="image" />
                                 </div>

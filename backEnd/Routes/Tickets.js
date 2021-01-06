@@ -6,7 +6,7 @@ const db = require("../Models/index");
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, '../images');
+        cb(null, 'images');
     },
     filename: (req, file, cb) => {
         console.log(file);
@@ -36,6 +36,7 @@ Tickets.get("/tickets", (req, res) => {
 // ========= Post routes ============
 
 Tickets.post("/makeTicket", (req, res) => {
+    console.log("hit")
     const { project, description, severity } = req.body;
 
     db.Tickets
@@ -50,13 +51,7 @@ Tickets.post("/makeTicket", (req, res) => {
 
 //Upload route
 Tickets.post('/upload', upload.single('image'), (req, res, next) => {
-    try {
-        return res.status(201).json({
-            message: 'File uploded successfully'
-        });
-    } catch (error) {
-        console.error(error);
-    }
+    res.status(201)
 });
 
 
