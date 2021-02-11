@@ -8,7 +8,7 @@ import ListGroup from 'react-bootstrap/ListGroup'
 import Spinner from 'react-bootstrap/Spinner';
 import Axios from "axios";
 import Button from "react-bootstrap/esm/Button";
-import OpenTicketsView from "./OpenTicketsView.js";
+import View from "./OpenTicketsView.js";
 
 function OpenTickets() {
     const [tickets, setTickets] = useState([]);
@@ -41,7 +41,7 @@ function OpenTickets() {
             <Card.Body className="projCard">
                 {
                     view ?
-                        <OpenTicketsView />
+                        <View />
                         :
                         null
                 }
