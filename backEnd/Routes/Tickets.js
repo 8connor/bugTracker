@@ -38,6 +38,8 @@ Tickets.post("/makeTicket", (req, res) => {
     console.log("hit")
     const { project, description, severity } = req.body;
 
+    db.Images.create({project: project}).then(data => console.log(data)).catch(err => console.log(err))
+
     db.Tickets
         .create({
             project: project,

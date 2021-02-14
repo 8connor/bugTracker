@@ -49,9 +49,6 @@ function SubmitTicket() {
         formData.append("image", bugImage);
         formData.append("projName", selected)
 
-        Axios.post("/api/upload", formData)
-            .then(data => console.log(data))
-            .catch(err => console.log(err));
 
         Axios.post("/api/makeTicket", obj)
             .then(response => {
@@ -63,6 +60,9 @@ function SubmitTicket() {
                 document.querySelectorAll(".entry").forEach(text => text.value = "");
             })
             .catch(err => console.log(err))
+        Axios.post("/api/upload", formData)
+            .then(data => console.log(data))
+            .catch(err => console.log(err));
     }
 
     return (
