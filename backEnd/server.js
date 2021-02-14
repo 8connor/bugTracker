@@ -14,10 +14,11 @@ mongoose.connect(
 );
 
 app.use(express.json());
+app.use(express.static('public'))
 
-app.use("/api", Projects)
-app.use("/api", Users)
-app.use("/api", Tickets)
+app.use("/api", Projects);
+app.use("/api", Users);
+app.use("/api", Tickets);
 
 
 app.get("*", (req, res) => {
