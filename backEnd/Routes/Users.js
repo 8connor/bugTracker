@@ -16,7 +16,7 @@ Users.post("/addUser", (req, res) => {
             console.log(data);
 
             if (data) {
-                return
+                return res.send(200);
             } else {
                 db.Users
                     .create({ name: req.body.name })

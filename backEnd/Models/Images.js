@@ -7,9 +7,9 @@ const ImageSchema = new Schema(
             type: String,
             required: true
         },
-        ticketId: {
+        ticketId:{
             type: String,
-            required: true
+            required: false
         },
         images: [
             {
