@@ -63,6 +63,7 @@ Tickets.post("/upload", upload.single("image"), (req, res, next) => {
                 db.Images.updateOne(
                     { project: req.body.projName },
                     {
+                        ticketId: req.body.ticketId,
                         $push: {
                             images: {
                                 location: `public/images/${req.file.filename}`,

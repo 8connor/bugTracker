@@ -7,6 +7,10 @@ const ImageSchema = new Schema(
             type: String,
             required: true
         },
+        ticketId:{
+            type: String,
+            required: false
+        },
         images: [
             {
                 _id: false,
