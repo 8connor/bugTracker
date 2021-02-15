@@ -49,6 +49,17 @@ Tickets.post("/makeTicket", (req, res) => {
         .catch((err) => console.log(err));
 });
 
+Tickets.post("/ticketPics", (req, res) => {
+    console.log(req.body);
+
+    db.Images.findOne({ ticketId: req.body.ticket._id })
+        .lean()
+        .then(data => {
+            console.log(data)
+            res.json(data.images)
+        })
+})
+
 //Upload route
 Tickets.post("/upload", upload.single("image"), (req, res, next) => {
     console.log("reaching the route");
@@ -66,7 +77,7 @@ Tickets.post("/upload", upload.single("image"), (req, res, next) => {
                         ticketId: req.body.ticketId,
                         $push: {
                             images: {
-                                location: `public/images/${req.file.filename}`,
+                                location: encodeURI(`http://localhost:3001/images/${req.file.filename}`),
                             },
                         },
                     }
