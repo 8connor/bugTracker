@@ -1,15 +1,11 @@
-.parallax {
-  /* The image used */
-  background-image: url("parallax.jpg");
-
-  /* Set a specific height */
-  min-height: 90vh;
-
-  /* Create the parallax scrolling effect */
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+.headerCon {
+  background: rgb(34, 72, 195);
+  background: radial-gradient(
+    circle,
+    rgba(34, 72, 195, 1) 8%,
+    rgba(98, 191, 190, 1) 96%
+  );
+  min-height: 100vh;
 }
 
 .homeHeader {

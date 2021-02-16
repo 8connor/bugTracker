@@ -62,7 +62,7 @@ function View(props) {
                     {
                         imgArr.length > 0 ?
                             imgArr.map((image, i) =>
-                                <img alt={props.ticket.description} src={image.location} />
+                                <img alt={props.ticket.description} src={image.location} className="img-fluid" />
                             )
                             : ""
                     }

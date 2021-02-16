@@ -28,7 +28,7 @@ function Dashboard() {
         <Container className="mb-5">
             <Row>
                 <Col className="mt-2" sm={{ span: 12, offset: 0 }} md={{ span: 12, offset: 0 }} lg={{ span: 12, offset: 0 }}>
-                    <Card border="primary" className="shadow">
+                    <Card border="primary" className="shadow" style={{marginBottom: "50vh", marginTop: "100px"}}>
                         <Card.Title className="bg-dark text-light">
                             <p className="ml-3 mt-2">
                                 Admin Dash

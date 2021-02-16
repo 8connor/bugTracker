@@ -5,10 +5,10 @@ import "./index.css";
 
 function HomePage() {
     return (
-        <div className="parallax">
+        <div className="headerCon">
             <Container>
                 <Row className="justify-content-center">
-                    <h1 className="text-danger homeHeader">
+                    <h1 className="text-light homeHeader">
                         This is Bug Tracker
                     </h1>
                 </Row>

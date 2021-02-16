@@ -60,7 +60,7 @@ Tickets.post("/upload", upload.single("image"), (req, res, next) => {
     console.log("reaching the route");
     // console.log(req.body.projName);
     console.log(req.body.ticketId);
-    // console.log(req.file.filename);
+    console.log(req.file.filename);
 
     db.Projects.findOne({ name: req.body.projName })
         .lean()
