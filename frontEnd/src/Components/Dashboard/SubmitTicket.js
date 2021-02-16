@@ -97,7 +97,7 @@ function SubmitTicket() {
                                     <Dropdown.Item onClick={(e) => setSeverity(e.target.innerHTML)}>Severe</Dropdown.Item>
                                 </DropdownButton>
                             </Form.Group>
-                            <form enctype="multipart/form-data"  >
+                            <form encType="multipart/form-data"  >
                                 <div>
                                     <label>Select your profile picture:</label> <input type="file" name="image" id="bugImage" />
                                 </div>
