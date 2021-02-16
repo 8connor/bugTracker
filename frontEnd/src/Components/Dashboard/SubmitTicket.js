@@ -47,7 +47,7 @@ function SubmitTicket() {
         let formData = new FormData();
 
         formData.append("image", bugImage);
-        formData.append("projName", selected)
+        formData.append("projName", selected);
 
 
         Axios.post("/api/makeTicket", obj)
@@ -56,11 +56,14 @@ function SubmitTicket() {
                 setSelected("");
                 setDescription("");
                 setSeverity("");
+                formData.append("ticketId", response.data._id);
 
                 document.querySelectorAll(".entry").forEach(text => text.value = "");
-            })
+
+                return Axios.post("/api/upload", formData)
+            }).then(responseTwo => console.log(responseTwo))
             .catch(err => console.log(err))
-        Axios.post("/api/upload", formData)
+
             .then(data => console.log(data))
             .catch(err => console.log(err));
     }
@@ -82,7 +85,7 @@ function SubmitTicket() {
                                     {projects.length === 0 ? <Dropdown.Item disabled>Empty</Dropdown.Item>
                                         :
                                         projects.map((item, i) =>
-                                            <Dropdown.Item onClick={() => setSelected(item.name)}>{item.name}</Dropdown.Item>
+                                            <Dropdown.Item key={item} onClick={() => setSelected(item.name)}>{item.name}</Dropdown.Item>
                                         )
                                     }
                                 </DropdownButton>
@@ -97,7 +100,7 @@ function SubmitTicket() {
                                     <Dropdown.Item onClick={(e) => setSeverity(e.target.innerHTML)}>Severe</Dropdown.Item>
                                 </DropdownButton>
                             </Form.Group>
-                            <form enctype="multipart/form-data"  >
+                            <form encType="multipart/form-data">
                                 <div>
                                     <label>Select your profile picture:</label> <input type="file" name="image" id="bugImage" />
                                 </div>

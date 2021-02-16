@@ -89,36 +89,33 @@ function EditProject() {
                             >
                                 <ListGroup variant="flush">
                                     {list.length === 0 ?
-                                        empty ? null :
-                                            <Row className="justify-content-center">
-                                                <Spinner animation="border" />
+                                        empty ? "" :
+                                            <Row key="123" className="justify-content-center">
+                                                <Spinner key={123}  animation="border" />
                                             </Row>
                                         : list.map((item, i) =>
-                                            <>
-                                                <ListGroup.Item key={i} id={i}>
-                                                    <Container>
-                                                        <Row>
-                                                            <Col
-                                                                sm={{ span: 6, offset: 0 }}
-                                                                md={{ span: 6, offset: 0 }}
-                                                                lg={{ span: 6, offset: 0 }}
-                                                            >
-                                                                {item.name}
-                                                            </Col>
-                                                            <Col
-                                                                sm={{ span: 6, offset: 0 }}
-                                                                md={{ span: 6, offset: 0 }}
-                                                                lg={{ span: 6, offset: 0 }}
-
-                                                                className="buttonCol"
-                                                            >
-                                                                <Button variant="success" onClick={() => handleEdit(item)}>edit</Button>
-                                                                <Button variant="danger" onClick={() => handleDelete(item._id, i)}>delete</Button>
-                                                            </Col>
-                                                        </Row>
-                                                    </Container>
-                                                </ListGroup.Item>
-                                            </>
+                                            <ListGroup.Item key={i} id={i}>
+                                                <Container>
+                                                    <Row>
+                                                        <Col
+                                                            sm={{ span: 6, offset: 0 }}
+                                                            md={{ span: 6, offset: 0 }}
+                                                            lg={{ span: 6, offset: 0 }}
+                                                        >
+                                                            {item.name}
+                                                        </Col>
+                                                        <Col
+                                                            sm={{ span: 6, offset: 0 }}
+                                                            md={{ span: 6, offset: 0 }}
+                                                            lg={{ span: 6, offset: 0 }}
+                                                            className="buttonCol"
+                                                        >
+                                                            <Button variant="success" onClick={() => handleEdit(item)}>edit</Button>
+                                                            <Button variant="danger" onClick={() => handleDelete(item._id, i)}>delete</Button>
+                                                        </Col>
+                                                    </Row>
+                                                </Container>
+                                            </ListGroup.Item>
                                         )
                                     }
                                 </ListGroup>
