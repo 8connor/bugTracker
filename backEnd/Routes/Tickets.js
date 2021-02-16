@@ -35,10 +35,6 @@ Tickets.get("/tickets", (req, res) => {
 Tickets.post("/makeTicket", (req, res) => {
     const { project, description, severity } = req.body;
 
-    db.Images.create({ project: project })
-        .then((data) => console.log(data))
-        .catch((err) => console.log(err));
-
     db.Tickets.create({
         project: project,
         description: description,
@@ -71,14 +67,12 @@ Tickets.post("/upload", upload.single("image"), (req, res, next) => {
         .then((obj) => {
             if (obj) {
                 console.log(obj)
-                db.Images.updateOne(
-                    { project: req.body.projName },
+                db.Images.create(
                     {
+                        project: req.body.projName,
                         ticketId: req.body.ticketId,
-                        $push: {
-                            images: {
-                                location: encodeURI(`http://localhost:3001/images/${req.file.filename}`),
-                            },
+                        images: {
+                            location: encodeURI(`http://localhost:3001/images/${req.file.filename}`),
                         },
                     }
                 )
