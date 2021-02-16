@@ -25,4 +25,4 @@ yarn-error.log*
 
 .env
 
-/backEnd/Images
+/backEnd/public

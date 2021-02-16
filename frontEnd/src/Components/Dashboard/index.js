@@ -11,7 +11,6 @@ function Dashboard() {
     const { isAuthenticated, user } = useAuth0();
 
     useEffect(() => {
-
         if (isAuthenticated === true) {
             Axios.post("/api/addUser", user)
                 .then(response => {
@@ -21,7 +20,9 @@ function Dashboard() {
         } else {
             console.log("not authenticated")
         }
+
     }, [])
+
 
     return (
         <Container className="mb-5">
