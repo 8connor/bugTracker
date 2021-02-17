@@ -102,7 +102,7 @@ function SubmitTicket() {
                             </Form.Group>
                             <form encType="multipart/form-data">
                                 <div>
-                                    <label>Select your profile picture:</label> <input type="file" name="image" id="bugImage" />
+                                    <label>upload an image for the bug ticket:</label> <input type="file" name="image" id="bugImage" />
                                 </div>
                             </form>
                         </Col>
