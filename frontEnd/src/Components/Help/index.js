@@ -17,14 +17,21 @@ function Help() {
                 >
                     <Card
                         className="shadow"
-                        style={{height: "50vh", marginTop:"50px", marginBottom: "50vh"}}
+                        style={{ height: "50vh", marginTop: "50px", marginBottom: "50vh" }}
                     >
                         <Card.Body
                             className="text-center mt-5 aboutCard"
                         >
-                            <p>
-                                For assistance please contact me via github, linkedIn, or email.
-                            </p>
+                            <Card.Text>
+                                <p>
+                                    For assistance please contact me via github, linkedIn, or email.
+                                </p>
+                                <a href="https://github.com/8connor">github</a>
+                                <br />
+                                <a href="https://www.linkedin.com/in/james-hooven/">linkedIn</a>
+                                <br />
+                                <a href="mailto:connorh16@gmail.com">email</a>
+                            </Card.Text>
                         </Card.Body>
                     </Card>
                 </Col>
