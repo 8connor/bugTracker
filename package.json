@@ -3,14 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
-  "dependencies": {
-    "concurrently": "^5.3.0",
-    "express": "^4.17.1",
-    "if-env": "^1.0.4",
-    "mongoose": "^5.11.8",
-    "multer": "^1.4.2"
-  },
-  "devDependencies": {},
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "start:prod": "node server.js",
@@ -20,6 +12,14 @@
     "build": "cd frontEnd && npm run build",
     "heroku-postbuild": "npm run build"
   },
+  "dependencies": {
+    "concurrently": "^5.3.0",
+    "express": "^4.17.1",
+    "if-env": "^1.0.4",
+    "mongoose": "^5.11.8",
+    "multer": "^1.4.2"
+  },
+  "devDependencies": {},
   "author": "",
   "license": "ISC"
 }
