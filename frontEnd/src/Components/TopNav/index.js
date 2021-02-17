@@ -12,18 +12,18 @@ function TopNav() {
 
     return (
         <Navbar bg="dark" variant="dark" className="shadow">
-            <Navbar.Brand href={`${isAuthenticated ? `/dashboard` : `/`}`}>Bug Tracker</Navbar.Brand>
+            <Navbar.Brand href="/">Bug Tracker</Navbar.Brand>
             <Nav className="mr-auto">
                 {isAuthenticated ?
                     <>
                         <Link to="/dashboard" className="nav-link">Dashboard</Link>
-                        <Link to="/help" className="nav-link">Help</Link>
                     </>
                     :
                     <>
                         <Link to="/" className="nav-link">Home</Link>
                     </>
                 }
+                <Link to="/help" className="nav-link">Help</Link>
                 <Link to="/about" className="nav-link">About</Link>
             </Nav>
             <Nav className="ml-auto">
