@@ -25,6 +25,5 @@ yarn-error.log*
 
 .env
 
-/public/images/*
 
 /frontEnd/.eslintcache
