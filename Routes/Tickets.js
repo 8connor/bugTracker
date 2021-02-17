@@ -72,7 +72,7 @@ Tickets.post("/upload", upload.single("image"), (req, res, next) => {
                         project: req.body.projName,
                         ticketId: req.body.ticketId,
                         images: {
-                            location: encodeURI(`http://localhost:3001/images/${req.file.filename}`),
+                            location: encodeURI(`/images/${req.file.filename}`),
                         },
                     }
                 )

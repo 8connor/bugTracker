@@ -13,8 +13,8 @@ function View(props) {
         }
 
         axios.post("/api/ticketPics", obj)
-        .then(response => setImgArr(response.data))
-        .catch(err => console.log(err));
+            .then(response => setImgArr(response.data))
+            .catch(err => console.log(err));
     }, [])
 
     return (
@@ -62,7 +62,7 @@ function View(props) {
                     {
                         imgArr.length > 0 ?
                             imgArr.map((image, i) =>
-                                <img alt={props.ticket.description} src={image.location} className="img-fluid" />
+                                <img alt={props.ticket.description} src={window.origin + "/" + image.location} className="img-fluid" />
                             )
                             : ""
                     }
