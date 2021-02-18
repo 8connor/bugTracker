@@ -30,7 +30,7 @@ function About() {
                                     This application is currently still under development, but the basic functionality is currently in tact.
                                 </p>
                                 <p>
-                                    This application uses React.js, Node.js, MongoDb, Express, and Bootstrap.
+                                    This application uses Auth0, React.js, Node.js, MongoDb, Express, and Bootstrap.
                                 </p>
                                 <p>
                                     Test login 

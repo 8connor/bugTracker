@@ -61,11 +61,11 @@ function SubmitTicket() {
                 document.querySelectorAll(".entry").forEach(text => text.value = "");
 
                 return Axios.post("/api/upload", formData)
-            }).then(responseTwo => console.log(responseTwo))
+            }).then(responseTwo => {
+                document.getElementById("bugImage").value = "";
+                console.log(responseTwo);
+            })
             .catch(err => console.log(err))
-
-            .then(data => console.log(data))
-            .catch(err => console.log(err));
     }
 
     return (
@@ -102,7 +102,9 @@ function SubmitTicket() {
                             </Form.Group>
                             <form encType="multipart/form-data">
                                 <div>
-                                    <label>upload an image for the bug ticket:</label> <input type="file" name="image" id="bugImage" />
+                                    <label>upload an image for the bug ticket:</label>
+                                    <br />
+                                    <input type="file" name="image" id="bugImage" />
                                 </div>
                             </form>
                         </Col>
