@@ -96,6 +96,7 @@ Tickets.post("/resolveTicket", (req, res) => {
                     ticketId: req.body._id
                 }).then(dataOne => {
                     console.log(dataOne)
+                    res.json(dataOne)
                 }).catch(err => console.log(err));
         }).catch(err => console.log(err));
 })

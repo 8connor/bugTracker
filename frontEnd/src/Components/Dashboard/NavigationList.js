@@ -17,7 +17,6 @@ function NavigationList() {
     const [submitTicket, setSubmitTicket] = useState(false);
 
     const handleClick = (e) => {
-
         switch (e.target.innerHTML) {
             case "Create project":
                 setCreate(true);

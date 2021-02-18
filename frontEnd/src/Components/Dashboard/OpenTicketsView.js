@@ -86,7 +86,7 @@ function View(props) {
                                     <Carousel.Item key={i}>
                                         <img
                                             className="d-block w-100 img-fluid"
-                                            alt={props.ticket.description} src={"http://localhost:3001" + "/" + image.location}
+                                            alt={props.ticket.description} src={window.origin + "/" + image.location}
                                         />
                                     </Carousel.Item>
                                 )
