@@ -86,4 +86,18 @@ Tickets.post("/upload", upload.single("image"), (req, res, next) => {
     // Creating a new collection to handle images and their locations.
 });
 
+Tickets.post("/resolveTicket", (req, res) => {
+    db.Tickets
+        .findOneAndDelete({ _id: req.body._id })
+        .then(data => {
+            console.log(data);
+            db.Images
+                .findOneAndDelete({
+                    ticketId: req.body._id
+                }).then(dataOne => {
+                    console.log(dataOne)
+                }).catch(err => console.log(err));
+        }).catch(err => console.log(err));
+})
+
 module.exports = Tickets;

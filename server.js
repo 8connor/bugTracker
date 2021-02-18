@@ -5,7 +5,11 @@ const mongoose = require("mongoose");
 const PORT = process.env.PORT || 3001;
 const { Projects, Users, Tickets } = require("./Routes/index.js");
 
-mongoose.connect(`mongodb+srv://herokuUser:${process.env.herokuPass}@cluster0.beusi.mongodb.net/`, { useNewUrlParser: true, useUnifiedTopology: true }, () => {
+// mongoose.connect(`mongodb+srv://herokuUser:${process.env.herokuPass}@cluster0.beusi.mongodb.net/`, { useNewUrlParser: true, useUnifiedTopology: true }, () => {
+//     console.log("Successfully connected to Database");
+// });
+
+mongoose.connect(`mongodb://localhost:27017/bugTracker`, { useNewUrlParser: true, useUnifiedTopology: true }, () => {
     console.log("Successfully connected to Database");
 });
 
