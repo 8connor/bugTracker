@@ -56,11 +56,15 @@ Tickets.post("/ticketPics", (req, res) => {
 })
 
 //Upload route
-Tickets.post("/upload", upload.single("image"), (req, res, next) => {
+Tickets.post("/upload", upload.array("images", 10), (req, res, next) => {
     console.log("reaching the route");
     // console.log(req.body.projName);
     console.log(req.body.ticketId);
-    console.log(req.file.filename);
+    console.log(req.files);
+
+    var images = req.files.map((item, i) => {
+        return { location: encodeURI(`/images/${item.filename}`) }
+    })
 
     db.Projects.findOne({ name: req.body.projName })
         .lean()
@@ -71,9 +75,7 @@ Tickets.post("/upload", upload.single("image"), (req, res, next) => {
                     {
                         project: req.body.projName,
                         ticketId: req.body.ticketId,
-                        images: {
-                            location: encodeURI(`/images/${req.file.filename}`),
-                        },
+                        images: images,
                     }
                 )
                     .then((data) => console.log(data))

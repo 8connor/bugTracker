@@ -43,12 +43,12 @@ function SubmitTicket() {
             severity: severity
         }
 
-        var bugImage = document.getElementById("bugImage").files[0];
+        var bugImage = document.getElementById("bugImage").files;
         let formData = new FormData();
 
-        formData.append("image", bugImage);
-        formData.append("projName", selected);
+        console.log(bugImage)
 
+        formData.append("projName", selected);
 
         Axios.post("/api/makeTicket", obj)
             .then(response => {
@@ -56,13 +56,19 @@ function SubmitTicket() {
                 setSelected("");
                 setDescription("");
                 setSeverity("");
+
                 formData.append("ticketId", response.data._id);
+
+                for (var i = 0; i < bugImage.length; i++) {
+                    formData.append("images", bugImage[i]);
+                    console.log(bugImage[i]);
+                }
 
                 document.querySelectorAll(".entry").forEach(text => text.value = "");
 
                 return Axios.post("/api/upload", formData)
             }).then(responseTwo => {
-                document.getElementById("bugImage").value = "";
+                // document.getElementById("bugImage").replaceWith(document.getElementById("bugImage").value("").cloneNode(true));
                 console.log(responseTwo);
             })
             .catch(err => console.log(err))
@@ -104,7 +110,7 @@ function SubmitTicket() {
                                 <div>
                                     <label>upload an image for the bug ticket:</label>
                                     <br />
-                                    <input type="file" name="image" id="bugImage" />
+                                    <input type="file" name="images" multiple="multiple" id="bugImage" />
                                 </div>
                             </form>
                         </Col>
