@@ -49,6 +49,7 @@ function OpenTickets() {
             .then(data => {
                 console.log(data.data);
                 setDeleted(true)
+                setView(false)
             })
             .catch(err => console.log(err));
     }
@@ -64,10 +65,16 @@ function OpenTickets() {
                 {
                     view ?
                         <>
-                            <Button onClick={() => {
-                                setView(false)
-                                setDeleted(false)
-                            }}>Back</Button>
+                            <Button
+                                onClick={
+                                    () => {
+                                        setView(false)
+                                        setDeleted(false)
+                                    }
+                                }
+                            >
+                                Back
+                            </Button>
                             <View ticket={selected} />
                             <Button className="mb-5 mt-3 mr-5" variant="success" onClick={() => handleDelete(selected._id, index)}>Mark as resolved</Button>
                         </>
