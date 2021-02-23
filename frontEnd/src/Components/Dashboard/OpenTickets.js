@@ -6,7 +6,7 @@ import Col from "react-bootstrap/Col";
 import anime from "animejs/lib/anime.js";
 import ListGroup from 'react-bootstrap/ListGroup'
 import Spinner from 'react-bootstrap/Spinner';
-import Axios from "axios";
+import axios from "axios";
 import Button from "react-bootstrap/esm/Button";
 import View from "./OpenTicketsView.js";
 
@@ -15,9 +15,11 @@ function OpenTickets() {
     const [empty, setEmpty] = useState(false);
     const [selected, setSelected] = useState();
     const [view, setView] = useState(false);
+    const [index, setIndex] = useState();
+    const [deleted, setDeleted] = useState(false);
 
     useEffect(() => {
-        Axios.get("/api/tickets")
+        axios.get("/api/tickets")
             .then(response => {
                 setEmpty(response.data.length === 0 ? true : false)
                 setTickets(response.data)
@@ -30,11 +32,25 @@ function OpenTickets() {
             easing: 'easeInOutExpo',
             duration: 400,
         });
-    }, []);
+    }, [deleted]);
 
-    const handleSelect = (e) => {
-        setView(true)
-        setSelected(e)
+    const handleSelect = (e, a) => {
+        setView(true);
+        setSelected(e);
+        setIndex(a);
+    }
+
+    const handleDelete = (e, a) => {
+        let obj = {
+            _id: e
+        }
+
+        axios.post("/api/resolveTicket", obj)
+            .then(data => {
+                console.log(data.data);
+                setDeleted(true)
+            })
+            .catch(err => console.log(err));
     }
 
     return (
@@ -48,8 +64,12 @@ function OpenTickets() {
                 {
                     view ?
                         <>
-                            <Button onClick={() => setView(false)}>Back</Button>
+                            <Button onClick={() => {
+                                setView(false)
+                                setDeleted(false)
+                            }}>Back</Button>
                             <View ticket={selected} />
+                            <Button className="mb-5 mt-3 mr-5" variant="success" onClick={() => handleDelete(selected._id, index)}>Mark as resolved</Button>
                         </>
                         :
 
@@ -89,7 +109,7 @@ function OpenTickets() {
                                                                 md={{ span: 4, offset: 0 }}
                                                                 lg={{ span: 4, offset: 0 }}
                                                             >
-                                                                <Button onClick={() => handleSelect(item)}>view more</Button>
+                                                                <Button onClick={() => handleSelect(item, i)}>view more</Button>
                                                             </Col>
                                                         </Row>
                                                     </Container>

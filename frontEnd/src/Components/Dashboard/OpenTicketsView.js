@@ -19,17 +19,6 @@ function View(props) {
             .catch(err => console.log(err));
     }, []);
 
-    const handleDelete = (e) => {
-        let obj = {
-            _id: e
-        }
-
-        axios.post("/api/resolveTicket", obj)
-            .then(data => {
-                console.log(data.data);
-            }).catch(err => console.log(err))
-    }
-
     return (
         <Container className="mt-3">
             <Row>
@@ -63,16 +52,7 @@ function View(props) {
                         Severity: {props.ticket.severity}
                     </p>
                 </Col>
-                <Col
-                    xs={12}
-                    sm={12}
-                    md={12}
-                    lg={12}
-                    className="text-right"
-                >
-
-                    <Button className="mb-5 mt-3 mr-5" variant="success" onClick={() => handleDelete(props.ticket._id)}>Mark as resolved</Button>
-                </Col>
+                
                 <Col
                     xs={12}
                     sm={12}
