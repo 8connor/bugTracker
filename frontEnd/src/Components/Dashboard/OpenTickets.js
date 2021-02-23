@@ -19,6 +19,8 @@ function OpenTickets() {
     const [deleted, setDeleted] = useState(false);
 
     useEffect(() => {
+        setDeleted(false)
+
         axios.get("/api/tickets")
             .then(response => {
                 setEmpty(response.data.length === 0 ? true : false)
@@ -69,7 +71,6 @@ function OpenTickets() {
                                 onClick={
                                     () => {
                                         setView(false)
-                                        setDeleted(false)
                                     }
                                 }
                             >
