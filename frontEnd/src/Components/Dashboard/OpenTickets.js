@@ -50,8 +50,8 @@ function OpenTickets() {
         axios.post("/api/resolveTicket", obj)
             .then(data => {
                 console.log(data.data);
-                setDeleted(true)
-                setView(false)
+                setDeleted(true);
+                setView(false);
             })
             .catch(err => console.log(err));
     }
@@ -80,7 +80,6 @@ function OpenTickets() {
                             <Button className="mb-5 mt-3 mr-5" variant="success" onClick={() => handleDelete(selected._id, index)}>Mark as resolved</Button>
                         </>
                         :
-
                         <Container>
                             <Row>
                                 <Col
