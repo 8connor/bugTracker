@@ -6,6 +6,7 @@ import Help from "./Components/Help";
 import About from "./Components/About";
 import Footer from "./Components/Footer";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import "./Assets/index.scss"
 import {
   BrowserRouter as Router,
   Switch,
