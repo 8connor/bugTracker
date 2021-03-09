@@ -51,7 +51,7 @@ function NavigationList() {
     return (
         <>
             <Col sm={{ span: 12, offset: 0 }} md={{ span: 3, offset: 0 }} lg={{ span: 3, offset: 0 }}>
-                <Card>
+                <Card className="shadow">
                     <Card.Title className="bg-dark text-light">
                         <p className="ml-3 mt-2">
                             Navigation pane

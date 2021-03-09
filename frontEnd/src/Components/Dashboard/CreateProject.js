@@ -49,7 +49,7 @@ function CreateProject() {
     }
 
     return (
-        <Card>
+        <Card className="shadow">
             <Card.Title className="bg-dark text-light">
                 <p className="ml-3 mt-2">
                     Create Project
